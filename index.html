@@ -4,9 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css"></link>
+    <title>PDF_Viewer</title>
 </head>
 <body>
-    
+    <div class="top-bar">
+        <button class="btn" id="previous">
+            <i class="fas fa-arrow-circle-left"> </i> Previous Page
+        </button>
+        <button class="btn" id="next">
+            Next Page <i class="fas fa-arrow-circle-right"> </i>
+        </button>
+        <span class="page-deets">
+            Page <span class="page-num"> </span> of <span class="total-pages"></span>
+        </span>
+    </div>
+
+    <canvas id="pdf-render"></canvas>
+
+    <script defer src="js/all.js"></script> <!-- Font Awesome -->
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script> 
+    <script src="js/main.js"></script>
 </body>
 </html>
