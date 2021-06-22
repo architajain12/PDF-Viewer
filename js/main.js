@@ -27,6 +27,8 @@ const renderPage = num => {
                 pageNumIsPending = null;
             }
         });
+        //Current Page
+        document.querySelector('#page-num').textContent = num;
     });
 };
  
