@@ -32,9 +32,38 @@ const renderPage = num => {
     });
 };
  
+const queueRenderPage = num => {
+  if (pageIsRendering) {
+    pageNumIsPending = num;
+  } else {
+    renderPage(num);
+  }
+};
+
+// To display the previous page
+const displayPrevPage = () => {
+  if (pageNum <= 1) {
+    return;
+  }
+  pageNum--;
+  queueRenderPage(pageNum);
+};
+
+// To display the next page
+const displayNextPage = () => {
+  if (pageNum >= PdfDoc.numPages) {
+    return;
+  }
+  pageNum++;
+  queueRenderPage(pageNum);
+};
+
 pdfjsLib.getDocument(url).promise.then(pdfDoc => {
     PdfDoc = pdfDoc;
     console.log(PdfDoc);
     document.querySelector('#total-pages').textContent = PdfDoc.numPages;
     renderPage(pageNum)
 });
+
+document.querySelector('#previous').addEventListener('click', displayPrevPage);
+document.querySelector('#next').addEventListener('click', displayNextPage);
